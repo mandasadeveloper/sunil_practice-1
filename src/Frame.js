@@ -1,12 +1,13 @@
 import { Route, Switch } from "react-router";
-import Login from "./Login";
-import Register from "./Register";
+import Login from "./Login/Login"
+import Register from "./Register/Register";
 import LayOut from "./Layout";
 import Error from "./Error";
-import Demo2 from "./demo2";
-import Demo from "./demo";
+import ProfileInputField from "./profile/profile_input_field";
+import Demo from "./profile/demo";
 import Student from "./pages/Student";
 import Addstudent from "./pages/Addstudent";
+import Demo2 from "./demo2"
 import {
 TopBar,
 ActionList,
@@ -19,8 +20,10 @@ useState,useCallback,
 HomeMajor,
 OrdersMajor,
  } from "react";
-import Profile from "./Profile";
-export default function FrameExample() {
+import Profile from "./profile/Profile";
+import AddField from "./profile/AddField";
+import { Link } from "react-router-dom";
+const FrameExample=()=>{
       
     const [searchActive, setSearchActive] = useState(false);
     const [searchValue, setSearchValue] = useState('');
@@ -89,13 +92,16 @@ export default function FrameExample() {
           title="App"
           items={[
             {
-              label: 'Dashboard',             
-              icon: HomeMajor,              
+              label: 'Dashboard',                                      
             },
             {
-              label: 'Setting', 
-              url:"login",             
-              icon: OrdersMajor,              
+              label:(<Link to= "/" className="Link">Setting</Link>)                           
+            },
+            {
+              label:(<Link to= "/gift" className="Link">Gift Card</Link>)                           
+            },
+            {
+              label:(<Link to= "/manage-address" className="Link">Manage Address</Link>)                           
             },
           ]}  
         />
@@ -119,9 +125,9 @@ export default function FrameExample() {
           <Switch>
     <Route exact path="/" component={LayOut}/>
     <Route exact path="/profile" component={Profile}/>
-    <Route exact path="/register" component={Register}/>
-    <Route exact path="/login" component={Login}/>
-    <Route exact path="/add-student" component={Addstudent}/>
+    <Route exact path="/manage-address" component={Register}/>
+    <Route exact path="/gift" component={Login}/>
+    <Route exact path="/add" component={AddField}/>
     <Route exact path="/demo2" component={Demo2}/>
     <Route exact path="/demo" component={Demo}/>
     <Route component={Error}/>
@@ -130,3 +136,4 @@ export default function FrameExample() {
         </AppProvider>
     );
   }
+  export default FrameExample

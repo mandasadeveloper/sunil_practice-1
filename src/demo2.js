@@ -1,42 +1,27 @@
-import { TextField } from '@shopify/polaris';
-import React, { useCallback, useState } from 'react'
-import { FormControl } from 'react-bootstrap';
+import React, { useState } from "react";
 
-const Demo2 = () => {
-
-    const [formValues, setFormValues] = useState({
-        fname:"",
-        lname:""
-    });
-
-        const handleFnameChange = (event) => {
-            const {name,value} = event.target
-                setFormValues((prevNote) =>{
-                return {
-                ...prevNote,
-                [name]: value
-                };
-                });
-        }
-       
-    let handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(JSON.stringify(formValues));
+export default function Demo2() {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      value:[],
     }
-
-    return (
-        <form  onSubmit={handleSubmit}>        
-            <div className="form-inline">
-              <label>Name</label>              
-              <FormControl type="text" name="fname" value={formValues.fname} onChange={handleFnameChange} />
-              <label>Email</label>
-              <FormControl type="text" name="lname" value={formValues.lname} onChange={handleFnameChange} />            
-            </div>
-          <div className="button-section">             
-              <button className="button submit" type="submit">Submit</button>
-          </div>
-      </form>
-    )
+  ]);
+  let temp = [...data];  
+  const onchangeInput = (val, index) =>{     
+    temp[index] = val.target.value
+    setData(temp)
+  }
+  const handleSubmit= (e)=>{
+    e.preventDefault();
+    console.log(JSON.stringify(data));
+  }
+  return (
+    <>
+      {data.map((value, index) => {
+        return <input key={index} onChange={(val)=>{onchangeInput(val, index)}} /> 
+      })}
+      <button onClick={handleSubmit}>OK</button>
+    </>
+  );
 }
-
-export default Demo2

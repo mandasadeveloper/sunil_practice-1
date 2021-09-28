@@ -24,7 +24,7 @@ export default function LayOut(){
                 id={id}               
                 media={media}              
               >
-               <Link to={url} style={{color:"black", textDecoration: 'none'}}>
+               <Link to={url} className="Link">
                <h3>
                   <TextStyle variation="strong">{name}</TextStyle>
                 </h3>
@@ -43,9 +43,9 @@ export default function LayOut(){
           items={[
             {
               id: 1,
-              url: '/register',
-              name: 'Registration',
-              sku: 'Registration',             
+              url: '/manage-address',
+              name: 'Manage Address',
+              sku: 'Manage Address',             
               media: (<Avatar/>),
             },        
           ]}
@@ -56,7 +56,7 @@ export default function LayOut(){
                 id={id}               
                 media={media}              
               >
-               <Link to={url} style={{color:"black", textDecoration: 'none'}}>
+               <Link to={url} className="Link">
                <h3>
                   <TextStyle variation="strong">{name}</TextStyle>
                 </h3>
@@ -75,9 +75,9 @@ export default function LayOut(){
           items={[
             {
               id: 1,
-              url: '/login',
-              name: 'Login',
-              sku: 'login',             
+              url: '/gift',
+              name: 'Gift Cards',
+              sku: 'Gift Cards',             
               media: (<Avatar/>),
             },        
           ]}
@@ -88,7 +88,7 @@ export default function LayOut(){
                 id={id}               
                 media={media}              
               >
-               <Link to={url} style={{color:"black", textDecoration: 'none'}}>
+               <Link to={url} className="Link">
                <h3>
                   <TextStyle variation="strong">{name}</TextStyle>
                 </h3>
